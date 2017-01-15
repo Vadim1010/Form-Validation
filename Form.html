@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--<link rel="stylesheet" href="Form.css">-->
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+</head>
+<body class="container">
+<style>
+    span{
+        color:red;
+    }
+</style>
+    <div class="col-md-4 col-md-offset-4">
+
+           <div> <h2>Pегистрация</h2>
+                <label>
+                    <p>В ведите имя: <span>*</span></p>
+                    <input type="text" id="uzerName" maxlength="8" class="form-control">
+                </label>
+            </div>
+            <div>
+                <label>
+                    <p>В ведите фамилию:<span>*</span></p>
+                    <input type="text"  id="uzerSurname" maxlength="8"  class="form-control">
+                </label>
+            </div>
+            <div>
+                <label>
+                    <p>В ведите пароль:<span>*</span></p>
+                    <input type="password" id="uzerPassword"   class="form-control">
+                </label>
+            </div>
+            <div>
+                <label>
+                    <p>Поторите  пароль:<span>*</span></p>
+                    <input type="password" id="uzerPassword2"   class="form-control">
+                </label>
+            </div><div>
+                <label>
+                    <p>Поторите  Email:<span>*</span></p>
+                    <input type="text" id="uzerMail"  class="form-control">
+                </label>
+            </div>
+            <div>
+                <label>
+                    <p>В ведите ваш возраст:</p>
+                    <input type="number" id="uzerEge" size="2" disabled class="form-control"><br>
+                    <input type="range" step="1" min="8" max="99" Oninput ="uzerEge.value=this.value" class="form-control">
+                </label><br>
+            </div>
+            <div>
+                <button class="btn btn-default" onclick="saveUzer(uzerName.value, uzerSurname.value, uzerPassword.value,
+                uzerPassword2.value, uzerMail.value,  uzerEge.value)" >Start</button>
+                <button class="btn btn-default" onclick="save()">Save show</button>
+            </div>
+
+    </div>
+       <script>
+        var name, surname, pass, pass2,mail, ege;
+        function saveUzer(uzerName, uzerSurname, uzerPassword, uzerPassword2, uzerMail, uzerEge){
+            if(uzerName != "" && uzerSurname !="" && uzerPassword !="" && uzerPassword2 !="" && uzerMail !=""){
+                if(uzerName.search(/[0-9]/)== -1 && (uzerSurname.search(/[0-9]/)== -1)){
+                    if (uzerPassword == uzerPassword2) {
+                        if(uzerPassword.length > 4) {
+                            if (/^([a-z0-9_\.-]+)@([a-z0-9_\.-]+)\.([a-z\.]{2,6})$/.test(uzerMail)) {
+                                name = uzerName;
+                                surname = uzerSurname;
+                                pass = uzerPassword;
+                                mail = uzerMail;
+                                ege = uzerEge;
+                                alert("Данные записаны");
+
+                            }
+                            else {
+                                alert("Неправильная форма ввода электронной почты");
+                            }
+                        }
+                        else{alert("Пароль должен быть больше 4 чимволов");}
+                    }
+                    else {
+                        alert('Пароли должны совпадать');
+                    }
+                }
+                else {alert("В имене или фамилие не должно быть цисел");
+                }
+
+            }else {
+                alert ('Заполните все формы с " * "');
+            }
+        }
+
+function save(){
+    if(name != undefined && pass != undefined && ege !=undefined){
+    alert("Имя "+ name +  "; Фамилия "+ surname + "; Пароль " + pass  + "; Email " + mail+ "; Возраст "+ ege);
+}else {
+    alert("Нет данных");}
+}
+
+    </script>
+
+
+
+
+
+
+
+</body>
+</html>
